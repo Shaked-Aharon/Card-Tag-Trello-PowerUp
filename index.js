@@ -6,7 +6,7 @@ window.TrelloPowerUp.initialize({
       ]);
   },
   'card-buttons': function (t, options) {
-    return [tag.Btn];
+    return [tag.Btn()];
   },
   'card-detail-badges': function (t, options) {
     return t.get('card', 'shared', 'tag')
