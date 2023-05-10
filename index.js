@@ -41,7 +41,7 @@ function tagSelectionPopup(t) {
   return t.popup({
     title: 'Set Tag',
     items: [
-      { text: 'Select', callback: handleResetSelection },
+      // { text: 'Select', callback: handleResetSelection },
       { text: 'Bug', callback: handleTagSelection.bind({ text: 'Bug', value: 'bug' }) },
       { text: 'Task', callback: handleTagSelection.bind({ text: 'Task', value: 'task' }) },
       { text: 'Story', callback: handleTagSelection.bind({ text: 'Story', value: 'story' }) },
