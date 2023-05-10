@@ -29,7 +29,8 @@ window.TrelloPowerUp.initialize({
           }
           return [{
             text: tag.text,
-            color: tag.color
+            color: tag.color,
+            showOnClose: true
           }];
         });
     }
