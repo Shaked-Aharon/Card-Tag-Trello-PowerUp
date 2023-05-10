@@ -43,10 +43,10 @@ window.TrelloPowerUp.initialize({
     return t.popup({
       title: 'Set Tag',
       items: [
-        { text: 'Bug', callback: handleTagSelection },
-        { text: 'Task', callback: handleTagSelection },
-        { text: 'Story', callback: handleTagSelection },
-        { text: 'Epic', callback: handleTagSelection }
+        { text: 'Bug', callback: handleTagSelection.bind('Bug') },
+        { text: 'Task', callback: handleTagSelection.bind('Task') },
+        { text: 'Story', callback: handleTagSelection.bind('Story') },
+        { text: 'Epic', callback: handleTagSelection.bind('Epic') }
       ],
     });
   }
