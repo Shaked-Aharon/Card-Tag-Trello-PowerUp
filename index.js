@@ -50,8 +50,11 @@ function tagSelectionPopup(t) {
   });
 }
 
-function handleResetSelection(t, options){
-  return t.set('card', 'shared', 'tag', null);
+function handleResetSelection(t, options) {
+  return t.set('card', 'shared', 'tag', null)
+    .then(function () {
+      return t.closePopup();
+    });;
 }
 
 function handleTagSelection(t, options) {
