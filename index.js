@@ -6,7 +6,7 @@ var onBtnClick = function (t, opts) {
   console.log('Someone clicked the button');
 };
 
-Promise.initialize({
+TrelloPowerUp.initialize({
   'card-buttons': function (t, opts) {
     return [{
       // usually you will provide a callback function to be run on button click
