@@ -51,7 +51,7 @@ function tagSelectionPopup(t) {
 }
 
 function handleResetSelection(t, options){
-  return t.remove('card', 'shared', 'tag');
+  return t.set('card', 'shared', 'tag', null);
 }
 
 function handleTagSelection(t, options) {
