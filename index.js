@@ -1,6 +1,5 @@
 window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
-    let cardAttachments = opts.attachments; // Trello passes you the attachments on the card
     return t
       .card("name")
       .get("name")
@@ -53,10 +52,7 @@ function tagSelectionPopup(t) {
 
 function handleTagSelection(t, selection) {
   if (this.value = 'reset') {
-    return t.set('card', 'shared', 'tag', undefined)
-      .then(function () {
-        return t.closePopup();
-      });
+    return t.remove('card', 'shared', 'tag');
   }
   var tag = {
     text: this.text,
