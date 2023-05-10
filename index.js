@@ -1,40 +1,57 @@
 window.TrelloPowerUp.initialize({
-  "card-badges": function (t, opts) {
-    let cardAttachments = opts.attachments; // Trello passes you the attachments on the card
+  "card-detail-badges": function (t, opts) {
     return t
       .card("name")
       .get("name")
       .then(function (cardName) {
         console.log("We just loaded the card name for fun: " + cardName);
+
         return [
           {
-            // Dynamic badges can have their function rerun
-            // after a set number of seconds defined by refresh.
-            // Minimum of 10 seconds.
+            // dynamic badges can have their function rerun after a set number
+            // of seconds defined by refresh. Minimum of 10 seconds.
             dynamic: function () {
-              // we could also return a Promise that resolves to
-              // this as well if we needed to do something async first
+              // we could also return a Promise that resolves to this
+              // as well if we needed to do something async first
               return {
+                title: "Detail Badge",
                 text: "Dynamic " + (Math.random() * 100).toFixed(0).toString(),
-                icon: "./images/icon.svg",
-                color: "green",
+                color: randomBadgeColor(),
                 refresh: 10, // in seconds
               };
             },
           },
           {
-            // It's best to use static badges unless you need your
-            // badges to refresh.
-            // You can mix and match between static and dynamic
+            // its best to use static badges unless you need your badges
+            // to refresh you can mix and match between static and dynamic
+            title: "Detail Badge",
             text: "Static",
-            icon: HYPERDEV_ICON, // for card front badges only
             color: null,
+          },
+          {
+            // card detail badges (those that appear on the back of cards)
+            // also support callback functions so that you can open for example
+            // open a popup on click
+            title: "Popup Detail Badge",
+            text: "Popup",
+            callback: function (t, opts) {
+              // function to run on click
+              // do something
+            },
+          },
+          {
+            // or for simpler use cases you can also provide a url
+            // when the user clicks on the card detail badge they will
+            // go to a new tab at that url
+            title: "URL Detail Badge",
+            text: "URL",
+            url: "https://trello.com/home",
+            target: "Trello Landing Page", // optional target for above url
           },
         ];
       });
   },
 });
-
 
 
 // var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
