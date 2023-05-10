@@ -26,50 +26,50 @@ TrelloPowerUp.initialize({
       target: 'Trello Developer Site' // optional target for above url
     },
     {
-      icon: './icon.svg',
-      text: 'Custom Field',
+      icon: GRAY_ICON,
+      text: 'Test Field',
       callback: function (t) {
-        return t.popup({
-          title: 'My Custom Field',
-          url: './custom-field.html',
-          height: 184,
-          callback: function () {
-            return {
-              customField: {
-                title: 'My Custom Field',
-                value: t.card('custom', 'customField')
-              }
-            };
-          }
-        });
+        // return t.popup({
+        //   title: 'My Custom Field',
+        //   url: './custom-field.html',
+        //   height: 184,
+        //   callback: function () {
+        //     return {
+        //       customField: {
+        //         title: 'My Custom Field',
+        //         value: t.card('custom', 'customField')
+        //       }
+        //     };
+        //   }
+        // });
       }
     }
   ];
   }
 });
 
-TrelloPowerUp.initialize({
-  'card-buttons': function (t, options) {
-    return [
-      {
-        icon: './icon.svg',
-        text: 'Custom Field',
-        callback: function (t) {
-          return t.popup({
-            title: 'My Custom Field',
-            url: './custom-field.html',
-            height: 184,
-            callback: function () {
-              return {
-                customField: {
-                  title: 'My Custom Field',
-                  value: t.card('custom', 'customField')
-                }
-              };
-            }
-          });
-        }
-      }
-    ];
-  }
-});
+// TrelloPowerUp.initialize({
+//   'card-buttons': function (t, options) {
+//     return [
+//       {
+//         icon: './icon.svg',
+//         text: 'Custom Field',
+//         callback: function (t) {
+//           return t.popup({
+//             title: 'My Custom Field',
+//             url: './custom-field.html',
+//             height: 184,
+//             callback: function () {
+//               return {
+//                 customField: {
+//                   title: 'My Custom Field',
+//                   value: t.card('custom', 'customField')
+//                 }
+//               };
+//             }
+//           });
+//         }
+//       }
+//     ];
+//   }
+// });
