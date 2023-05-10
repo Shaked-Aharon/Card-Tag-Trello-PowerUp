@@ -16,7 +16,9 @@ window.TrelloPowerUp.initialize({
               { text: 'Epic', value: 'epic' }
             ],
             callback: function(t, selection) {
+              console.log(selection);
               if (!selection) {
+                alert('no selection')
                 return;
               }
               var tag = {
