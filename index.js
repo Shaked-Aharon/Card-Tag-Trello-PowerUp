@@ -1,9 +1,7 @@
 window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
     let cardAttachments = opts.attachments; // Trello passes you the attachments on the card
-    return t
-      .card("name")
-      .get("name")
+    return t.get('card', 'shared', 'tag')
       .then(showBadge);
   },
   'card-buttons': function (t, options) {
