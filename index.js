@@ -6,32 +6,7 @@ window.TrelloPowerUp.initialize({
           light: 'https://example.com/icon.svg'
         },
         text: 'Set Tag',
-        callback: function(t) {
-          return t.popup({
-            title: 'Set Tag',
-            items: [
-              { text: 'Bug', value: 'bug' },
-              { text: 'Task', value: 'task' },
-              { text: 'Story', value: 'story' },
-              { text: 'Epic', value: 'epic' }
-            ],
-            callback: function(t, selection) {
-              console.log(selection);
-              if (!selection) {
-                alert('no selection')
-                return;
-              }
-              var tag = {
-                text: selection.text,
-                color: getTagColor(selection.value)
-              };
-              return t.set('card', 'shared', 'tag', tag)
-                .then(function() {
-                  return t.closePopup();
-                });
-            }
-          });
-        }
+        callback: tagSelectionPopup
       }];
     },
     'card-detail-badges': function(t, options) {
@@ -63,3 +38,31 @@ window.TrelloPowerUp.initialize({
     }
   }
   
+
+  function tagSelectionPopup(t) {
+    return t.popup({
+      title: 'Set Tag',
+      items: [
+        { text: 'Bug', value: 'bug', callback: handleTagSelection },
+        { text: 'Task', value: 'task', callback: handleTagSelection },
+        { text: 'Story', value: 'story', callback: handleTagSelection },
+        { text: 'Epic', value: 'epic', callback: handleTagSelection }
+      ],
+    });
+  }
+
+  function handleTagSelection(t, selection) {
+    console.log(selection);
+    if (!selection) {
+      alert('no selection')
+      return;
+    }
+    var tag = {
+      text: selection.text,
+      color: getTagColor(selection.value)
+    };
+    return t.set('card', 'shared', 'tag', tag)
+      .then(function() {
+        return t.closePopup();
+      });
+  }
