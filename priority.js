@@ -13,8 +13,8 @@ const priority = {
                         { text: 'Select', callback: handleprioritySelection.bind({ text: 'Epic', value: 'epic' }) },
                         {
                             text: 'Highest',
-                            icon: 'https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/Highest-priority.svg',
-                            callback: handleprioritySelection.bind({ type: RESET })
+                            icon: icons.priority_highest,
+                            callback: handleprioritySelection.bind({ value:'priority_highest' })
                         },
                         { text: 'High', callback: handleprioritySelection.bind({ text: 'Bug', value: 'bug' }) },
                         { text: 'Medium', callback: handleprioritySelection.bind({ text: 'Task', value: 'task' }) },
