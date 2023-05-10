@@ -1,9 +1,7 @@
 window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
-    return t
-      .card("name")
-      .get("name")
-      .then(showBadge);
+    return t.get('card', 'shared', 'tag')
+      .then(showBadge.bind({type: badageTypes.badge}));
   },
   'card-buttons': function (t, options) {
     return [{
@@ -17,7 +15,7 @@ window.TrelloPowerUp.initialize({
   },
   'card-detail-badges': function (t, options) {
     return t.get('card', 'shared', 'tag')
-      .then(showDetailsBadge);
+      .then(showBadge.bind({type: badageTypes.detailsBadge}));
   }
 });
 
@@ -68,21 +66,22 @@ function handleTagSelection(t, options) {
     });
 }
 
-function showDetailsBadge(tag) {
+function showBadge(tag) {
   if (!tag) return [];
   const badge = {
     text: tag.text,
     color: tag.color,
     showOnClose: true
   }
+  if(this.type === badageTypes.badge) {delete badge.showOnClose;}
   return [badge];
 }
 
-function showBadge(tag) {
-  if (!tag) return [];
-  const badge = {
-    text: tag.text,
-    color: tag.color,
-  }
-  return [badge];
+
+
+
+const badageTypes = {
+  badge: 1,
+  detailsBadge: 2
 }
+
