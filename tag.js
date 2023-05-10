@@ -2,11 +2,22 @@ const tag = {
     Btn() {
         return {
             icon: {
-                dark: 'https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/tag.png',
-                light: 'https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/tag.png'
+                dark: 'https://icons8.com/icon/22013/tag-window',
+                light: 'https://icons8.com/icon/22013/tag-window'
             },
             text: 'Set Tag',
-            callback: tagSelectionPopup
+            callback: function(t) {
+                return t.popup({
+                  title: 'Set Tag',
+                  items: [
+                    { text: 'Select', callback: handleTagSelection.bind({ type: RESET }) },
+                    { text: 'Bug', callback: handleTagSelection.bind({ text: 'Bug', value: 'bug' }) },
+                    { text: 'Task', callback: handleTagSelection.bind({ text: 'Task', value: 'task' }) },
+                    { text: 'Story', callback: handleTagSelection.bind({ text: 'Story', value: 'story' }) },
+                    { text: 'Epic', callback: handleTagSelection.bind({ text: 'Epic', value: 'epic' }) }
+                  ],
+                });
+              }
         }
     },
     Badge(tag, badageType = badageTypes.badge) {
@@ -20,28 +31,14 @@ const tag = {
         return badge;
     }
 }
-
-function tagSelectionPopup(t) {
-    return t.popup({
-      title: 'Set Tag',
-      items: [
-        { text: 'Select', callback: handleResetSelection },
-        { text: 'Bug', callback: handleTagSelection.bind({ text: 'Bug', value: 'bug' }) },
-        { text: 'Task', callback: handleTagSelection.bind({ text: 'Task', value: 'task' }) },
-        { text: 'Story', callback: handleTagSelection.bind({ text: 'Story', value: 'story' }) },
-        { text: 'Epic', callback: handleTagSelection.bind({ text: 'Epic', value: 'epic' }) }
-      ],
-    });
-  }
   
-  function handleResetSelection(t, options) {
-    return t.set('card', 'shared', 'tag', null)
+  function handleTagSelection(t, options) {
+    if(this.type === RESET){
+        return t.set('card', 'shared', 'tag', null)
       .then(function () {
         return t.closePopup();
       });;
-  }
-  
-  function handleTagSelection(t, options) {
+    }
     var tag = {
       text: this.text,
       color: tagType[this.value]
