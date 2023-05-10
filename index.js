@@ -54,7 +54,7 @@ window.TrelloPowerUp.initialize({
         return 'yellow';
       case 'story':
         return 'blue';
-      case 'epic':
+      case 'epic': 
         return 'green';
       default:
         return 'gray';
