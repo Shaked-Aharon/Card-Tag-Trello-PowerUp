@@ -18,7 +18,7 @@ window.TrelloPowerUp.initialize({
       icon: GRAY_ICON,
       text: 'Just a URL',
       condition: 'always',
-      url: 'https://developer.atlassian.com/cloud/trello',
+      url: 'https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/custom-field.html',
       target: 'Trello Developer Site' // optional target for above url
     }];
   }
