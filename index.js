@@ -19,22 +19,6 @@ window.TrelloPowerUp.initialize({
   }
 });
 
-function getTagColor(value) {
-  switch (value) {
-    case 'bug':
-      return 'red';
-    case 'task':
-      return 'yellow';
-    case 'story':
-      return 'blue';
-    case 'epic':
-      return 'green';
-    default:
-      return 'gray';
-  }
-}
-
-
 function tagSelectionPopup(t) {
   return t.popup({
     title: 'Set Tag',
@@ -58,7 +42,7 @@ function handleResetSelection(t, options) {
 function handleTagSelection(t, options) {
   var tag = {
     text: this.text,
-    color: getTagColor(this.value)
+    color: tagType[this.value]
   };
   return t.set('card', 'shared', 'tag', tag)
     .then(function () {
@@ -73,15 +57,8 @@ function showBadge(tag) {
     color: tag.color,
     showOnClose: true
   }
-  if(this.type === badageTypes.badge) {delete badge.showOnClose;}
+  if(this.type === badageTypes.badge) {badge.showOnClose = undefined;}
   return [badge];
 }
 
-
-
-
-const badageTypes = {
-  badge: 1,
-  detailsBadge: 2
-}
 
