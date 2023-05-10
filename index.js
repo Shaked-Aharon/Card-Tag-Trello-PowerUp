@@ -11,8 +11,7 @@ window.TrelloPowerUp.initialize({
             // badges to refresh.
             // You can mix and match between static and dynamic
             text: "Static",
-            icon: HYPERDEV_ICON, // for card front badges only
-            color: null,
+            color: 'purple',
           },
         ];
       });
