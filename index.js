@@ -8,7 +8,7 @@ TrelloPowerUp.initialize({
       callback: function (t) {
         return t.popup({
           title: 'My Custom Field',
-          url: './custom-field.html',
+          url: 'https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/custom-field.html',
           height: 184,
           callback: function () {
             return {
