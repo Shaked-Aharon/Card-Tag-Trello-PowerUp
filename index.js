@@ -1,14 +1,16 @@
 window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
     let cardAttachments = opts.attachments; // Trello passes you the attachments on the card
-    return t.get('card', 'shared', 'tag')
-      .then(showBadge);
+    return t
+      .card("name")
+      .get("name")
+      .then(showBadge.bind({notInDetails: true}));
   },
   'card-buttons': function (t, options) {
     return [{
       icon: {
-        dark: 'https://example.com/icon.svg',
-        light: 'https://example.com/icon.svg'
+        dark: './tag.png',
+        light: './tag.png'
       },
       text: 'Set Tag',
       callback: tagSelectionPopup
@@ -16,7 +18,7 @@ window.TrelloPowerUp.initialize({
   },
   'card-detail-badges': function (t, options) {
     return t.get('card', 'shared', 'tag')
-      .then(showDetailsBadge);
+      .then(showBadge.bind({notInDetails: false}));
   }
 });
 
@@ -40,6 +42,7 @@ function tagSelectionPopup(t) {
   return t.popup({
     title: 'Set Tag',
     items: [
+      { text: 'Select', callback: handleTagSelection.bind({ text: 'Select', value: 'reset' }) },
       { text: 'Bug', callback: handleTagSelection.bind({ text: 'Bug', value: 'bug' }) },
       { text: 'Task', callback: handleTagSelection.bind({ text: 'Task', value: 'task' }) },
       { text: 'Story', callback: handleTagSelection.bind({ text: 'Story', value: 'story' }) },
@@ -49,9 +52,11 @@ function tagSelectionPopup(t) {
 }
 
 function handleTagSelection(t, selection) {
-  if (!selection) {
-    alert('no selection')
-    return;
+  if (this.value = 'reset') {
+    return t.set('card', 'shared', 'tag', undefined)
+      .then(function () {
+        return t.closePopup();
+      });
   }
   var tag = {
     text: this.text,
@@ -63,22 +68,13 @@ function handleTagSelection(t, selection) {
     });
 }
 
-function showDetailsBadge(tag) {
-  if (!tag) {
-    return [];
-  }
-  return [{
+function showBadge(tag) {
+  if (!tag) return [];
+  const badge = {
     text: tag.text,
     color: tag.color,
     showOnClose: true
-  }];
-}
-
-function showBadge (tag) {
-  return [
-    {
-      text: tag.text,
-      color: tag.color,
-    },
-  ];
+  }
+  if(this.notInDetails){delete badge.showOnClose;}
+  return [badge];
 }
