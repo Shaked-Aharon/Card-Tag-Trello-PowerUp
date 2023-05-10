@@ -1,4 +1,16 @@
 window.TrelloPowerUp.initialize({
+  'card-badges': function(t, opts) {
+    return t.get('card', 'shared', 'tag')
+      .then(function(tag) {
+        if (!tag) {
+          return [];
+        }
+        return [{
+          text: tag.text,
+          color: tag.color
+        }];
+      });
+  },
     'card-buttons': function(t, options) {
       return [{
         icon: {
@@ -52,7 +64,6 @@ window.TrelloPowerUp.initialize({
   }
 
   function handleTagSelection(t, selection) {
-    console.log(t, selection, this);
     if (!selection) {
       alert('no selection')
       return;
