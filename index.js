@@ -41,7 +41,7 @@ function tagSelectionPopup(t) {
   return t.popup({
     title: 'Set Tag',
     items: [
-      { text: 'Select', callback: handleTagSelection.bind({ text: 'Select', value: 'reset' }) },
+      { text: 'Select', callback: handleResetSelection },
       { text: 'Bug', callback: handleTagSelection.bind({ text: 'Bug', value: 'bug' }) },
       { text: 'Task', callback: handleTagSelection.bind({ text: 'Task', value: 'task' }) },
       { text: 'Story', callback: handleTagSelection.bind({ text: 'Story', value: 'story' }) },
@@ -50,10 +50,11 @@ function tagSelectionPopup(t) {
   });
 }
 
-function handleTagSelection(t, selection) {
-  if (this.value = 'reset') {
-    return t.remove('card', 'shared', 'tag');
-  }
+function handleResetSelection(t, options){
+  return t.remove('card', 'shared', 'tag');
+}
+
+function handleTagSelection(t, options) {
   var tag = {
     text: this.text,
     color: getTagColor(this.value)
