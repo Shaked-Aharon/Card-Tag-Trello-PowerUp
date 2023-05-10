@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-  <script src="https://p.trellocdn.com/power-up.min.js"></script>
   <style>
     body {
       padding: 16px;
@@ -46,28 +45,7 @@
     <option value="task">Task</option>
   </select>
   <button id="custom-field-save">Save</button>
-  <script>
-    var Promise = TrelloPowerUp.Promise;
-
-    // Get the current card's ID from the popup arguments
-    var cardId = TrelloPowerUp.args['cardId'];
-
-    // Load the saved value when the popup is opened
-    TrelloPowerUp.get('card', 'custom', 'customField', cardId)
-    .then(function(data){
-      if(data && data.value){
-        document.getElementById('custom-field-select').value = data.value;
-      }
-    });
-
-    // Save the selected value when the "Save" button is clicked
-    document.getElementById('custom-field-save').addEventListener('click', function(){
-      var value = document.getElementById('custom-field-select').value;
-      return TrelloPowerUp.set('card', 'custom', 'customField', { value: value }, cardId)
-      .then(function(){
-        TrelloPowerUp.closePopup();
-      });
-    });
-  </script>
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>
