@@ -6,8 +6,8 @@ window.TrelloPowerUp.initialize({
   'card-buttons': function (t, options) {
     return [{
       icon: {
-        dark: './tag.png',
-        light: './tag.png'
+        dark: 'https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/tag.png',
+        light: 'https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/tag.png'
       },
       text: 'Set Tag',
       callback: tagSelectionPopup
