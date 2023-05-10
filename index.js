@@ -3,7 +3,7 @@ window.TrelloPowerUp.initialize({
     return t
       .card("name")
       .get("name")
-      .then(showBadge.bind({notInDetails: true}));
+      .then(showBadge);
   },
   'card-buttons': function (t, options) {
     return [{
@@ -17,7 +17,7 @@ window.TrelloPowerUp.initialize({
   },
   'card-detail-badges': function (t, options) {
     return t.get('card', 'shared', 'tag')
-      .then(showBadge.bind({notInDetails: false}));
+      .then(showDetailsBadge);
   }
 });
 
@@ -65,13 +65,21 @@ function handleTagSelection(t, options) {
     });
 }
 
-function showBadge(tag) {
+function showDetailsBadge(tag) {
   if (!tag) return [];
   const badge = {
     text: tag.text,
     color: tag.color,
     showOnClose: true
   }
-  if(this.notInDetails){delete badge.showOnClose;}
+  return [badge];
+}
+
+function showBadge(tag) {
+  if (!tag) return [];
+  const badge = {
+    text: tag.text,
+    color: tag.color,
+  }
   return [badge];
 }
