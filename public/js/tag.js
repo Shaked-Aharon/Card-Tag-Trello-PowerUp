@@ -41,37 +41,38 @@ function handleTagSelection(t, options) {
     color: tagType[this.value]
   };
   if (this.value === 'bug') {
-    t.getRestApi()
-      .getToken()
-      .then(function (token) {
+    setBugTemplate()
+    // t.getRestApi()
+    //   .getToken()
+    //   .then(function (token) {
 
-        t.card('id')
-          .then(({ id }) => {
-            console.log({ token, id });
-            const desc = `####**Step to Reproduce:**####
+    //     t.card('id')
+    //       .then(({ id }) => {
+    //         console.log({ token, id });
+    //         const desc = `####**Step to Reproduce:**####
 
-            ####**Actual Result:**####
+    //         ####**Actual Result:**####
 
-            ####**Expected Result:**####
+    //         ####**Expected Result:**####
 
 
-            ####**Relevant Assets:**#### (like id or barcode or product or client)`;
-            console.log(desc)
-            const url = `https://api.trello.com/1/cards/${id}?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${desc}`;
-            fetch(encodeURI(url), { method: 'PUT' }
-            ).then(res => {
-              console.log(res);
-              return res.json();
-            })
-            .then(res => console.log(res))
-              .catch(err => console.log(err))
-          })
-        if (!token) {
-          // do auth instead
-        }
+    //         ####**Relevant Assets:**#### (like id or barcode or product or client)`;
+    //         console.log(desc)
+    //         const url = `https://api.trello.com/1/cards/${id}?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${desc}`;
+    //         fetch(encodeURI(url), { method: 'PUT' }
+    //         ).then(res => {
+    //           console.log(res);
+    //           return res.json();
+    //         })
+    //         .then(res => console.log(res))
+    //           .catch(err => console.log(err))
+    //       })
+    //     if (!token) {
+    //       // do auth instead
+    //     }
 
-        // make a request with token
-      });
+    //     // make a request with token
+    //   });
   }
   return t.set('card', 'shared', 'tag', tag)
     .then(function () {
