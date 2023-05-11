@@ -1,7 +1,7 @@
 window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
-    t.card('all').then(({ card }) => {
-      console.log({ card })
+    t.card('all').then((card) => {
+      console.log(card)
 
       t.set('card', 'desc', 'lorespm epsum lorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm', { id: card.id, visibility: 'private' })
         .then(() => {
