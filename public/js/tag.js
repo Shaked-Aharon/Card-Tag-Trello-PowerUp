@@ -56,7 +56,8 @@ function handleTagSelection(t, options) {
 
 
             ####**Relevant Assets:**#### (like id or barcode or product or client)`;
-            fetch(`https://api.trello.com/1/cards/${id}?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${desc}`, { method: 'PUT' }
+            const url = `https://api.trello.com/1/cards/${id}?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${desc}`;
+            fetch(encodeURIComponent(url), { method: 'PUT' }
             ).then(res => {
               console.log(res);
             })
