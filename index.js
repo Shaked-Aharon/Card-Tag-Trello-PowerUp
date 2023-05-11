@@ -1,16 +1,11 @@
 window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
-    t.card('all').then((card) => {
-      console.log(card)
 
-      t.set('card', 'shared', 'desc', 'lorespm epsum lorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm')
-        .then(() => {
-          console.log('changed!');
-        })
-    })
 
-    t.get('card', 'shared').then(shared => console.log({ shared }))
-    t.get('card', 'private').then(private => console.log({ private }))
+    Promise
+    .all(t.card('all'), t.get('card', 'shared'), t.get('card', 'private'))
+    .then([card, shared, private] => console.log({card, shared, private}))
+    
     return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
       .then(([selectedTag, selectedPriority]) => {
         return [
@@ -31,6 +26,13 @@ window.TrelloPowerUp.initialize({
           priority.Badge(selectedPriority, badageTypes.detailsBadge)
         ]
       })
+  },
+  'attachment-sections': function (t, options){
+    return [{
+      id: 'Yellowstone', // optional if you aren't using a function for the title
+      title: 'Example Attachment Section: Yellowstone',
+      content: 'test content'
+    }];
   }
 });
 
