@@ -11,14 +11,11 @@ const priority = {
                     title: 'Set Priority',
                     items: [
                         { text: 'Select', callback: handleprioritySelection.bind({ text: 'Epic', value: 'epic' }) },
-                        {
-                            text: 'Highest',
-                            icon: icons.priority_highest,
-                            callback: handleprioritySelection.bind({ value:'priority_highest' })
-                        },
-                        { text: 'High', callback: handleprioritySelection.bind({ text: 'Bug', value: 'bug' }) },
-                        { text: 'Medium', callback: handleprioritySelection.bind({ text: 'Task', value: 'task' }) },
-                        { text: 'Low', callback: handleprioritySelection.bind({ text: 'Story', value: 'story' }) },
+                        { text: 'Highest', icon: icons.priority_highest, callback: handleprioritySelection.bind({ text: 'Highest', icon: '' }) },
+                        { text: 'High', callback: handleprioritySelection.bind({ text: 'High', icon: 'bug' }) },
+                        { text: 'Medium', callback: handleprioritySelection.bind({ text: 'Medium', icon: 'task' }) },
+                        { text: 'Low', callback: handleprioritySelection.bind({ text: 'Low', icon: 'story' }) },
+                        { text: 'Lowest', callback: handleprioritySelection.bind({ text: 'Lowest', icon: 'story' }) },
                     ],
                 });
             }
