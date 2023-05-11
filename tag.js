@@ -1,10 +1,7 @@
 const tag = {
     Btn() {
         return {
-            icon: {
-                dark: 'https://icons8.com/icon/22013/tag-window',
-                light: 'https://icons8.com/icon/22013/tag-window'
-            },
+            icon: icons.tag,
             text: 'Set Tag',
             callback: function(t) {
                 return t.popup({
