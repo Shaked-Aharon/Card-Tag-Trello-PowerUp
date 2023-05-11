@@ -17,23 +17,23 @@ window.TrelloPowerUp.initialize({
   },
   'card-buttons': function (t, options) {
 
-    return t.getRestApi()
-    	// We now have an instance of the API client.
-      .isAuthorized()
-      .then(function(isAuthorized) {
-        console.log(isAuthorized)
-        if (isAuthorized) {
-          return [{
-            text: 'David\'s Power-Up',
-            callback: showMenu
-          }];
-        } else {
-          return [{
-            text: 'David\'s Power-Up',
-            callback: showIframe
-          }];
-        }
-      });
+    // return t.getRestApi()
+    // 	// We now have an instance of the API client.
+    //   .isAuthorized()
+    //   .then(function(isAuthorized) {
+    //     console.log(isAuthorized)
+    //     if (isAuthorized) {
+    //       return [{
+    //         text: 'David\'s Power-Up',
+    //         callback: showMenu
+    //       }];
+    //     } else {
+    //       return [{
+    //         text: 'David\'s Power-Up',
+    //         callback: showIframe
+    //       }];
+    //     }
+    //   });
 
 
     return [tag.Btn(), priority.Btn()];
