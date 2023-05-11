@@ -1,10 +1,8 @@
 window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
-    // return t.get('card', 'shared', 'tag')
-    //   .then(selectedTag => [
-    //     tag.Badge(selectedTag, badageTypes.badge),
-    //     priority.Badge(null, badageTypes.badge)
-    //   ]);
+    t.card('all').then(listts => {
+      console.log({listts})
+    })
     t.get('card', 'shared').then(shared => console.log({shared}))
     t.get('card', 'private').then(private => console.log({private}))
       return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
