@@ -39,7 +39,7 @@ function handleprioritySelection(t, options) {
     }
     var priority = {
         text: this.text,
-        icon: tagType[this.value]
+        icon: this.icon
     };
     return t.set('card', 'shared', 'priority', priority)
         .then(function () {
