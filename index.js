@@ -4,7 +4,7 @@ window.TrelloPowerUp.initialize({
 
     Promise
     .all(t.card('all'), t.get('card', 'shared'), t.get('card', 'private'))
-    .then(([card, shared, private]) => console.log({card, shared, private}))
+    .then((res) => console.log(res))
     
     return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
       .then(([selectedTag, selectedPriority]) => {
