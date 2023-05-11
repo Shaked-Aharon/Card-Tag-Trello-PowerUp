@@ -2,6 +2,9 @@ window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
     t.card('all').then(card => console.log({card}))
     t.set('card', 'desc', 'lorespm epsum lorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsum')
+    .then(() => {
+      console.log('changed!');
+    })
     t.get('card', 'shared').then(shared => console.log({shared}))
     t.get('card', 'private').then(private => console.log({private}))
       return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
