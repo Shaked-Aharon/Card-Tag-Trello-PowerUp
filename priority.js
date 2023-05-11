@@ -8,11 +8,11 @@ const priority = {
                     title: 'Set Priority',
                     items: [
                         { text: 'Select', callback: handleprioritySelection.bind({ type: RESET }) },
-                        { text: 'Highest', callback: handleprioritySelection.bind({ text: 'Highest', icon: icons.priority_highest }) },
-                        { text: 'High', callback: handleprioritySelection.bind({ text: '/\\ High', icon: icons.priority_highest }) },
-                        { text: 'Medium', callback: handleprioritySelection.bind({ text: '-- Medium', icon: icons.priority_highest }) },
-                        { text: 'Low', callback: handleprioritySelection.bind({ text: '\\/ Low', icon: icons.priority_highest }) },
-                        { text: 'Lowest', callback: handleprioritySelection.bind({ text: 'Lowest', icon: icons.priority_highest }) },
+                        { text: 'Highest', callback: handleprioritySelection.bind({ text: '&#xf102; Highest', icon: icons.priority_highest }) },
+                        { text: 'High', callback: handleprioritySelection.bind({ text: '&#xf077; High', icon: icons.priority_highest }) },
+                        { text: 'Medium', callback: handleprioritySelection.bind({ text: '&#xf0dc; Medium', icon: icons.priority_highest }) },
+                        { text: 'Low', callback: handleprioritySelection.bind({ text: '	&#xf078; Low', icon: icons.priority_highest }) },
+                        { text: 'Lowest', callback: handleprioritySelection.bind({ text: '&#xf103; Lowest', icon: icons.priority_highest }) },
                     ],
                 });
             }
