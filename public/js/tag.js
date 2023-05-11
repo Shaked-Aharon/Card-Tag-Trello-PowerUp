@@ -52,7 +52,7 @@ function handleTagSelection(t, options) {
             API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE 
             API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE 
             API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE `;
-            fetch(`https://api.trello.com/1/cards/[existing card id]?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${desc}`, { method: 'PUT' }
+            fetch(`https://api.trello.com/1/cards/${id}?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${desc}`, { method: 'PUT' }
             ).then(res => {
               console.log(res);
             })
