@@ -20,18 +20,18 @@ const priority = {
     },
     Badge(priority, badageType = badageTypes.badge) {
         if (!priority) return;
-        const badge = {
-            text: priority.text,
-            icon: priority.icon,
-            showOnClose: true,
-            title: 'Priority'
-        }
         if (this.type === badageTypes.badge) {
-            badge.showOnClose = undefined;
-            badge.text = undefined;
-            badge.title = undefined;
+            return {
+                icon: priority.icon,
+            };
         }
-        return badge;
+        if (this.type === badageTypes.detailsBadge) {
+            return {
+                text: priority.text,
+                showOnClose: true,
+                title: 'Priority'
+            };
+        }
     }
 }
 
