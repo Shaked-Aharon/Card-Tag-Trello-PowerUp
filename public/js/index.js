@@ -16,27 +16,23 @@ window.TrelloPowerUp.initialize({
       })
   },
   'card-buttons': function (t, options) {
+    const defaultBtns = [tag.Btn(), priority.Btn()];
+    return t.getRestApi()
+    // We now have an instance of the API client.
+      .isAuthorized()
+      .then(function (isAuthorized) {
+        if (isAuthorized) {
+          return [...defaultBtns, {
+            text: 'Authorized Btn',
+            callback: showMenu
+          }];
+        }
+        return [...defaultBtns, {
+          text: 'David\'s Power-Up',
+          callback: showIframe
+        }];
 
-    // return t.getRestApi()
-    // 	// We now have an instance of the API client.
-    //   .isAuthorized()
-    //   .then(function(isAuthorized) {
-    //     console.log(isAuthorized)
-    //     if (isAuthorized) {
-    //       return [{
-    //         text: 'David\'s Power-Up',
-    //         callback: showMenu
-    //       }];
-    //     } else {
-    //       return [{
-    //         text: 'David\'s Power-Up',
-    //         callback: showIframe
-    //       }];
-    //     }
-    //   });
-
-
-    return [tag.Btn(), priority.Btn()];
+      });
   },
   'card-detail-badges': function (t, options) {
     return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
@@ -71,7 +67,7 @@ function showMenu(t) {
   return t.popup({
     title: 'Do something cool',
     items: [
-      {text: 'test'}
+      { text: 'test' }
     ]
   });
 }
