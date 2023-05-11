@@ -1,9 +1,9 @@
 const icons = {
     tag: './tag.svg',
-    priority_highest: './highest-priority.svg',
-    priority_high: './high-priority.svg',
-    priority_medium: './medium-priority.svg',
-    priority_low: './low-priority.svg',
-    priority_lowest: './lowest-priority.svg',
+    priority_highest: './priority-highest.svg',
+    priority_high: './priority-high.svg',
+    priority_medium: './priority-medium.svg',
+    priority_low: './priority-low.svg',
+    priority_lowest: './priority-lowest.svg',
     priority: './priority.svg',
 }
