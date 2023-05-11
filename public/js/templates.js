@@ -9,11 +9,10 @@ const BugTemplate = `####**Step to Reproduce:**####
 
 function setBugTemplate(t) {
     Promise.all([t.getRestApi().getToken(), t.card('id')])
-        .then(([token, id]) => {
+        .then(([token, card]) => {
             if (!token) {console.log('Not Authoraized, Cant Set Template'); return;}
-            console.log({ token, id, BugTemplate });
-            return;
-            const url = `https://api.trello.com/1/cards/${id}?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${BugTemplate}`;
+            console.log({ token, id:card.id, BugTemplate });
+            const url = `https://api.trello.com/1/cards/${card.id}?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${BugTemplate}`;
             fetch(encodeURI(url), { method: 'PUT' })
                 .then(res => {
                     console.log(res);
