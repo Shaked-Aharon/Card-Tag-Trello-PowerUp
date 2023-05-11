@@ -7,11 +7,11 @@ window.TrelloPowerUp.initialize({
     //   ]);
 
       return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
-      .then(([tag, priority]) => {
-        console.log({tag, priority});
+      .then(([selectedTag, selectedPriority]) => {
+        console.log({selectedTag, selectedPriority});
         return [
-          tag.Badge(tag, badageTypes.badge),
-          priority.Badge(priority, badageTypes.badge)
+          tag.Badge(selectedTag, badageTypes.badge),
+          priority.Badge(selectedPriority, badageTypes.badge)
         ]
 
       })
@@ -20,14 +20,12 @@ window.TrelloPowerUp.initialize({
     return [tag.Btn(), priority.Btn()];
   },
   'card-detail-badges': function (t, options) {
-    // return t.get('card', 'shared', 'tag')
-    //   .then(selectedTag => );
     return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
-    .then(([tag, priority]) => {
-        console.log({tag, priority});
+    .then(([selectedTag, selectedPriority]) => {
+        console.log({selectedTag, selectedPriority});
         return [
-          tag.Badge(tag, badageTypes.detailsBadge),
-          priority.Badge(priority, badageTypes.detailsBadge)
+          tag.Badge(selectedTag, badageTypes.detailsBadge),
+          priority.Badge(selectedPriority, badageTypes.detailsBadge)
         ]
       })
   }
