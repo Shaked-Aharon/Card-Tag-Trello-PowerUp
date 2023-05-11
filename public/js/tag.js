@@ -41,7 +41,7 @@ function handleTagSelection(t, options) {
     color: tagType[this.value]
   };
   if (this.value === 'bug') {
-    setBugTemplate()
+    setBugTemplate(t)
     // t.getRestApi()
     //   .getToken()
     //   .then(function (token) {
