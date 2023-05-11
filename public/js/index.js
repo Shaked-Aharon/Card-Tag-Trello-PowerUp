@@ -28,7 +28,7 @@ window.TrelloPowerUp.initialize({
           }];
         }
         return [...defaultBtns, {
-          text: 'David\'s Power-Up',
+          text: 'Not Authorized Btn',
           callback: showIframe
         }];
 
