@@ -3,10 +3,10 @@ window.TrelloPowerUp.initialize({
     t.card('all').then((card) => {
       console.log(card)
 
-      // t.set('card', 'desc', 'lorespm epsum lorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm', { id: card.id, visibility: 'private' })
-      //   .then(() => {
-      //     console.log('changed!');
-      //   })
+      t.set('card', 'public', 'desc', 'lorespm epsum lorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm epsumlorespm', { id: card.id })
+        .then(() => {
+          console.log('changed!');
+        })
     })
 
     t.get('card', 'shared').then(shared => console.log({ shared }))
