@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=utf-8>
+    <title>Authorize</title>
+</head>
+
+<body>
+    <button type=button>Click to authorize</button>
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script>
+        var t = window.TrelloPowerUp.iframe({
+            appKey: 'your-app-key',
+            appName: 'My Great Power-Up'
+        });
+        t.getRestApi()
+            .getToken()
+            .then(function (token) {
+                console.log(token)
+                if (!token) {
+                    // do auth instead
+                }
+
+                // make a request with token
+            });
+    </script>
+</body>
+
+</html>
