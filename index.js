@@ -2,10 +2,12 @@ window.TrelloPowerUp.initialize({
   "card-badges": function (t, opts) {
 
 
+    t.getAll().then(data => console.log(data));
+
     Promise
-    .all([t.card('all'), t.get('card', 'shared'), t.get('card', 'private')])
-    .then(([card, shared, private]) => console.log({card, shared, private}))
-    
+      .all([t.card('all'), t.get('card', 'shared'), t.get('card', 'private')])
+      .then(([card, shared, private]) => console.log({ card, shared, private }))
+
     return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
       .then(([selectedTag, selectedPriority]) => {
         return [
@@ -27,7 +29,7 @@ window.TrelloPowerUp.initialize({
         ]
       })
   },
-  'attachment-sections': function (t, options){
+  'attachment-sections': function (t, options) {
     return [{
       id: 'Yellowstone', // optional if you aren't using a function for the title
       title: 'Example Attachment Section: Yellowstone',
