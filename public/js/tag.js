@@ -46,10 +46,22 @@ function handleTagSelection(t, options) {
       .then(function (token) {
 
         t.card('id')
-        .then(id => {
-          console.log({token, id});
-          // fetch(`https://api.trello.com/1/cards/[existing card id]?key=f3066f5108e24c693700a5ac80e00dec&token=${token}`, {method: 'PUT'})
-        })
+          .then(({ id }) => {
+            console.log({ token, id });
+            fetch(`https://api.trello.com/1/cards/[existing card id]?key=f3066f5108e24c693700a5ac80e00dec&token=${token}`,
+              {
+                method: 'PUT', body: {
+                  desc: `API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE 
+                  API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE 
+                  API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE 
+                  API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE API UPDATE `
+                }
+              }
+            ).then(res => {
+              console.log(res);
+            })
+              .catch(err => console.log(err))
+          })
         if (!token) {
           // do auth instead
         }
