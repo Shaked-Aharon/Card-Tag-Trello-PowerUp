@@ -48,17 +48,14 @@ function handleTagSelection(t, options) {
         t.card('id')
           .then(({ id }) => {
             console.log({ token, id });
-            const desc = `
-            ####**Step to Reproduce:**####
+            const desc = `####**Step to Reproduce:**####
 
             ####**Actual Result:**####
 
             ####**Expected Result:**####
 
 
-            ####**Relevant Assets:**#### (like id or barcode or product or client)
-
-            `;
+            ####**Relevant Assets:**#### (like id or barcode or product or client)`;
             fetch(`https://api.trello.com/1/cards/${id}?key=f3066f5108e24c693700a5ac80e00dec&token=${token}&desc=${desc}`, { method: 'PUT' }
             ).then(res => {
               console.log(res);
