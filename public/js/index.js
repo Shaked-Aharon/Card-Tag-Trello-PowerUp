@@ -63,7 +63,7 @@ window.TrelloPowerUp.initialize({
 function showIframe(t) {
   return t.popup({
     title: 'Authorize to continue',
-    url: './authorize.html'
+    url: './public/html/authorize.html'
   });
 }
 
