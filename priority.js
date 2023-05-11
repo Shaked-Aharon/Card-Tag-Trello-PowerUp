@@ -1,20 +1,17 @@
 const priority = {
     Btn() {
         return {
-            icon: {
-                dark: 'https://icons8.com/icon/22013/tag-window',
-                light: 'https://icons8.com/icon/22013/tag-window'
-            },
+            icon: icons.priority,
             text: 'Set Priority',
             callback: function (t) {
                 return t.popup({
                     title: 'Set Priority',
                     items: [
-                        { text: 'Select', callback: handleprioritySelection.bind({ text: 'Epic', value: 'epic' }) },
+                        { text: 'Select', callback: handleprioritySelection.bind({ type: RESET }) },
                         { text: 'Highest', icon: icons.priority_highest, callback: handleprioritySelection.bind({ text: 'Highest', icon: '' }) },
-                        { text: 'High', callback: handleprioritySelection.bind({ text: 'High', icon: 'bug' }) },
-                        { text: 'Medium', callback: handleprioritySelection.bind({ text: 'Medium', icon: 'task' }) },
-                        { text: 'Low', callback: handleprioritySelection.bind({ text: 'Low', icon: 'story' }) },
+                        { text: 'High', callback: handleprioritySelection.bind({ text: '/\\ High', icon: 'bug' }) },
+                        { text: 'Medium', callback: handleprioritySelection.bind({ text: '-- Medium', icon: 'task' }) },
+                        { text: 'Low', callback: handleprioritySelection.bind({ text: '\\/ Low', icon: 'story' }) },
                         { text: 'Lowest', callback: handleprioritySelection.bind({ text: 'Lowest', icon: 'story' }) },
                     ],
                 });
