@@ -38,10 +38,13 @@ function handleTagSelection(t, options) {
   }
   var tag = {
     text: this.text,
-    color: tagType[this.value]
+    color: tagTypeToColor[this.value]
   };
+  if (this.value === 'story') {
+    setBugTemplate(t, this.value)
+  }
   if (this.value === 'bug') {
-    setBugTemplate(t)
+    setBugTemplate(t, this.value)
     // t.getRestApi()
     //   .getToken()
     //   .then(function (token) {

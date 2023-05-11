@@ -5,9 +5,16 @@ const badageTypes = {
 
 const RESET = 'RESET';
 
-const tagType = {
+const tagTypeToColor = {
     'bug': 'red',
     'task': 'yellow',
     'story': 'blue',
     'epic': 'green',
 }
+const tagType = {
+    'bug': 'Bug',
+    'task': 'Task',
+    'story': 'Story',
+    'epic': 'Epic',
+}
+
