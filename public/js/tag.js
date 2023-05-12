@@ -40,11 +40,8 @@ function handleTagSelection(t, options) {
     text: this.text,
     color: tagTypeToColor[this.value]
   };
-  if (this.value === 'story') {
-    setBugTemplate(t, this.value)
-  }
-  if (this.value === 'bug') {
-    setBugTemplate(t, this.value)
+  if (['bug', 'story', 'task'].includes(this.value)) {
+    setTemplate(t, this.value)
     // t.getRestApi()
     //   .getToken()
     //   .then(function (token) {
