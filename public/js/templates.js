@@ -60,7 +60,7 @@ const templates = {
 **When** action
 **Then** result
 
-### :paintbrush: Design
+### :art: Design
 
 #### Link to Screendesign
 
@@ -80,7 +80,7 @@ Any link to technical documents, e.g. Swagger Documentation, Architectural diagr
 
 Any notes you took during refinement sessions or talks with other people about the story
 
-### :flag on: ToDo
+### :triangular_flag_on_post: ToDo
 
 (-) \@ clarify
 `
