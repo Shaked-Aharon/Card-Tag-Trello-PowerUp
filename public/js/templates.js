@@ -57,8 +57,6 @@ const templates = {
 
 }
 
-const StoryTemplate = 
-
 function setTemplate(t, selectedTag) {
     Promise.all([t.getRestApi().getToken(), t.card('id')])
         .then(([token, card]) => {
