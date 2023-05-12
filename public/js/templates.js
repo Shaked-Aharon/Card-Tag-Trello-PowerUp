@@ -44,19 +44,18 @@ const templates = {
 
 ### :clipboard: Acceptance Criteria
 
-
 #### Acceptance Criteria 1
 
-**Given** precondition
-**When** action
-**Then** result
+> **Given** precondition
+> **When** action
+> **Then** result
 
 
 #### Acceptance Criteria 2
 
-**Given** precondition
-**When** action
-**Then** result
+> **Given** precondition
+> **When** action
+> **Then** result
 
 ### :art: Design
 
