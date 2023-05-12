@@ -41,7 +41,7 @@ function handleTagSelection(t, options) {
     color: tagTypeToColor[this.value]
   };
   return t.set('card', 'shared', 'tag', tag)
-    .then(function () {
-      return setTemplate(t, this.value)
+    .then(() => {
+      return setTemplate(t, tag)
     });
 }
