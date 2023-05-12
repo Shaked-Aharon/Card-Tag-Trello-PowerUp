@@ -85,17 +85,21 @@ Any notes you took during refinement sessions or talks with other people about t
 }
 
 function setTemplate(t, selectedTag) {
-    Promise.all([t.getRestApi().getToken(), t.card('id', 'desc')])
+    return Promise.all([t.getRestApi().getToken(), t.card('id', 'desc')])
         .then(([token, card]) => {
+            if (['bug', 'story', 'task'].includes(selectedTag)) {
+                return t.closePopup();
+            }
             console.log({ token, id: card.id, selectedTag, templates });
             if (!token) { console.log('Not Authoraized, Cant Set Template'); return; }
             if (card.desc.trim().length > 0) {
-                t.popup({
+                return t.popup({
                     type: 'confirm',
                     title: `Set Template`,
                     message: `Should i overright description with ${selectedTag} template?`,
                     confirmText: 'Yes',
                     onConfirm: function (t, opts) {
+                        t.closePopup();
                         let url = new URL(`https://api.trello.com/1/cards/${card.id}`);
                         url.searchParams.append('key', 'f3066f5108e24c693700a5ac80e00dec');
                         url.searchParams.append('token', token);
@@ -110,7 +114,7 @@ function setTemplate(t, selectedTag) {
                     },
                     confirmStyle: 'danger',
                     cancelText: 'No',
-                    onCancel: function (t, opts) { },
+                    onCancel: function (t, opts) { t.closePopup(); },
                 })
             }
         })
