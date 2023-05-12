@@ -44,7 +44,6 @@ const templates = {
 
 ### :clipboard: Acceptance Criteria
 
-/info panel
 
 #### Acceptance Criteria 1
 
@@ -52,7 +51,6 @@ const templates = {
 **When** action
 **Then** result
 
-/info panel
 
 #### Acceptance Criteria 2
 
