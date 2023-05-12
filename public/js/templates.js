@@ -36,7 +36,7 @@ const templates = {
 ### Additional Information
     `,
     [tagType.story]: `
-### :green book: Summary
+### :green_book: Summary
 
 **As a**
 **I want to**
