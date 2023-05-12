@@ -42,6 +42,6 @@ function handleTagSelection(t, options) {
   };
   return t.set('card', 'shared', 'tag', tag)
     .then(() => {
-      return setTemplate(t, tag)
+      return setTemplate(t, this.value)
     });
 }
