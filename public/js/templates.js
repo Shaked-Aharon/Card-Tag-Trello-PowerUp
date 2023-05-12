@@ -87,9 +87,7 @@ Any notes you took during refinement sessions or talks with other people about t
 function setTemplate(t, selectedTag) {
     return Promise.all([t.getRestApi().getToken(), t.card('id', 'desc')])
         .then(([token, card]) => {
-            if (['bug', 'story', 'task'].includes(selectedTag)) {
-                return t.closePopup();
-            }
+            if (!['bug', 'story', 'task'].includes(selectedTag)) {return t.closePopup();}
             console.log({ token, id: card.id, selectedTag, templates });
             if (!token) { console.log('Not Authoraized, Cant Set Template'); return; }
             if (card.desc.trim().length > 0) {
