@@ -85,20 +85,33 @@ Any notes you took during refinement sessions or talks with other people about t
 }
 
 function setTemplate(t, selectedTag) {
-    Promise.all([t.getRestApi().getToken(), t.card('id')])
+    Promise.all([t.getRestApi().getToken(), t.card('id', 'desc')])
         .then(([token, card]) => {
-            if (!token) { console.log('Not Authoraized, Cant Set Template'); return; }
             console.log({ token, id: card.id, selectedTag, templates });
-            let url = new URL(`https://api.trello.com/1/cards/${card.id}`);
-            url.searchParams.append('key', 'f3066f5108e24c693700a5ac80e00dec');
-            url.searchParams.append('token', token);
-            url.searchParams.append('desc', templates[selectedTag]);
-            fetch(url, { method: 'PUT' })
-                .then(res => {
-                    if (res.status !== 200) { /*do something*/ }
-                    return res.json();
+            if (!token) { console.log('Not Authoraized, Cant Set Template'); return; }
+            if (card.desc.trim().length > 0) {
+                t.popup({
+                    type: 'confirm',
+                    title: `Set Template`,
+                    message: `Should i overright description with ${selectedTag} template?`,
+                    confirmText: 'Yes',
+                    onConfirm: function (t, opts) {
+                        let url = new URL(`https://api.trello.com/1/cards/${card.id}`);
+                        url.searchParams.append('key', 'f3066f5108e24c693700a5ac80e00dec');
+                        url.searchParams.append('token', token);
+                        url.searchParams.append('desc', templates[selectedTag]);
+                        fetch(url, { method: 'PUT' })
+                            .then(res => {
+                                if (res.status !== 200) { /*do something*/ }
+                                return res.json();
+                            })
+                            .then(res => console.log(res))
+                            .catch(err => console.log(err))
+                    },
+                    confirmStyle: 'danger',
+                    cancelText: 'No',
+                    onCancel: function (t, opts) { },
                 })
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
+            }
         })
 }

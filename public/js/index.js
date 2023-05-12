@@ -1,18 +1,18 @@
 window.TrelloPowerUp.initialize({
+  "board-buttons": function (t, opts) {
+    return [
+      {
+        text: 'Agile Utils'
+      }
+    ]
+  },
   "card-badges": function (t, opts) {
-
-
-    Promise
-      .all([t.card('all'), t.get('card', 'shared'), t.get('card', 'private')])
-      .then(([card, shared, private]) => console.log({ card, shared, private }))
-
     return Promise.all([t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority')])
       .then(([selectedTag, selectedPriority]) => {
         return [
           tag.Badge(selectedTag, badageTypes.badge),
           priority.Badge(selectedPriority, badageTypes.badge)
         ]
-
       })
   },
   'card-buttons': function (t, options) {
