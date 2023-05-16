@@ -2,7 +2,13 @@ window.TrelloPowerUp.initialize({
   "board-buttons": function (t, opts) {
     return [
       {
-        text: 'Agile Utils'
+        text: 'Agile Utils',
+        callback: (t, opts) => {
+          t.popup({
+            title: 'Do something cool',
+            url: './public/html/settings.html'
+          });
+        }
       }
     ]
   },

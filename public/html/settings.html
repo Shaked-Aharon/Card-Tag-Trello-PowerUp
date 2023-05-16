@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=utf-8>
+    <title>Settings</title>
+</head>
+
+<body>
+    <input type="text" id="cardNumberPrefix" />
+    <button type="button" id="submitBtn">Save</button>
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script>
+        var t = window.TrelloPowerUp.iframe({
+            appKey: 'f3066f5108e24c693700a5ac80e00dec',
+            appName: 'Agile Utils'
+        });
+        t.render(function () {
+            document.querySelector('#submitBtn').addEventListener('click', function () {
+                const input = document.querySelector('#cardNumberPrefix');
+                console.log(input)
+                console.log(input.value)
+                // t.set('board', 'shared', 'card-number-prefix', input.value);
+            }, false);
+        });
+    </script>
+</body>
+
+</html>
