@@ -12,9 +12,9 @@ const tagTypeToColor = {
     'epic': 'green',
 }
 const tagType = {
-    'bug': 'bug',
-    'task': 'task',
-    'story': 'story',
-    'epic': 'epic',
+    'bug': 'Bug',
+    'task': 'Task',
+    'story': 'Story',
+    'epic': 'Epic',
 }
 

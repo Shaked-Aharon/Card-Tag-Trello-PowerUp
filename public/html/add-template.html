@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=utf-8>
+    <title>Add Template</title>
+    <style>
+        .form {
+            display: flex;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .form-field {
+            flex: 70%;
+        }
+
+        .form button {
+            flex: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <div class="form-field">
+            <label for="cardNumberPrefix">Card Number Prefix</label>
+            <input type="text" id="templateName" />
+        </div>
+        <button type="button" id="submitBtn">Add</button>
+    </div>
+    <script src="../js/constants.js"></script>
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script>
+        var t = window.TrelloPowerUp.iframe({
+            appKey: KEY,
+            appName: POWERUP_NAME
+        });
+
+        t.render(function () {
+            document.querySelector('button').addEventListener('click', function () {
+                const templateName = document.querySelector('#templateName');
+                if (!templateName.value) { return t.popup({ title: 'Error', items: [{ text: 'Please fill template name' }] }) }
+                t.get('board', 'shared', 'templates')
+                    .then(templates => {
+                        if (templates[templateName.value] !== undefined) {
+                            return t.popup({ title: 'Error', items: [{ text: 'A template with that name already exists!' }] })
+                        }
+                        templates[templateName.value] = '';
+                        console.log({ ...templates })
+                        t.set('board', 'shared', 'templates', templates)
+                            .then((e) => {
+                                t.closePopup();
+                            });
+                    })
+            }, false);
+        });
+    </script>
+</body>
+
+</html>

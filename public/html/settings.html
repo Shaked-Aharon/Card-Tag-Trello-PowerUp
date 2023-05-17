@@ -4,23 +4,120 @@
 <head>
     <meta charset=utf-8>
     <title>Settings</title>
+    <style>
+        .form {
+            display: flex;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .form-field {
+            flex: 70%;
+        }
+
+        .form button {
+            flex: auto;
+        }
+
+        #templatesBtn,
+        #authBtn {
+            width: 100%;
+            padding: 8px;
+            margin-top: 18px;
+        }
+
+        #templatesBtn {}
+
+        #authBtn {
+            background-color: lightblue;
+        }
+
+        #authBtn.authorized {
+            background-color: rosybrown;
+        }
+    </style>
 </head>
 
 <body>
-    <input type="text" id="cardNumberPrefix" />
-    <button type="button" id="submitBtn">Save</button>
+    <div class="form">
+        <div class="form-field">
+            <label for="cardNumberPrefix">Card Number Prefix</label>
+            <input type="text" id="cardNumberPrefix" />
+        </div>
+        <button type="button" id="submitBtn">Save</button>
+    </div>
+    <button id="templatesBtn">Edit Templates</button>
+    <button id="authBtn">Authorize</button>
+    <script src="../js/constants.js"></script>
+    <script src="../js/icons.js"></script>
     <script src="https://p.trellocdn.com/power-up.min.js"></script>
     <script>
         var t = window.TrelloPowerUp.iframe({
-            appKey: 'f3066f5108e24c693700a5ac80e00dec',
-            appName: 'Agile Utils'
+            appKey: KEY,
+            appName: POWERUP_NAME
         });
+        t.get('board', 'shared', 'card-number-prefix')
+            .then(value => document.querySelector('#cardNumberPrefix').value = value)
+
         t.render(function () {
+
+            const authBtn = document.querySelector('#authBtn');
+            const templatesBtn = document.querySelector('#templatesBtn');
+            Promise.all([t.getRestApi().isAuthorized()])
+                .then(([isAuthorized]) => {
+                    if (isAuthorized) {
+                        authBtn.innerText = 'Clear Token'
+                        authBtn.classList.add('authorized');
+                        templatesBtn.disabled = false;
+                        return;
+                    }
+                    templatesBtn.disabled = true;
+                    authBtn.innerText = 'Authorize'
+                    authBtn.classList.remove('authorized');
+                })
+
+
+            authBtn.addEventListener('click', function () {
+                if (authBtn.innerText === 'Clear Token') { return t.getRestApi().clearToken(); }
+                t.getRestApi()
+                    .authorize({ scope: 'read,write' })
+                    .then(function (t) {
+                        authBtn.innerText = 'Clear Token';
+                        authBtn.classList.add('authorized') = 'Clear Token';
+                    }).catch(TrelloPowerUp.restApiError.AuthDeniedError, function () {
+                        authBtn.innerText = 'Try again';
+                    });
+            }, false);
+
             document.querySelector('#submitBtn').addEventListener('click', function () {
                 const input = document.querySelector('#cardNumberPrefix');
-                console.log(input)
-                console.log(input.value)
+                t.set('board', 'shared', 'card-number-prefix', input.value);
+            }, false);
+
+            document.querySelector('#templatesBtn').addEventListener('click', function () {
+                // const input = document.querySelector('#cardNumberPrefix');
                 // t.set('board', 'shared', 'card-number-prefix', input.value);
+                t.modal({
+                    // the url to load for the iframe
+                    url: './templates-modal.html',
+                    // optional arguments to be passed to the iframe as query parameters
+                    // access later with t.arg('text')
+                    args: { text: 'Hello' },
+                    // optional color for header chrome
+                    accentColor: '#b57272',
+                    // initial height for iframe
+                    height: 500, // not used if fullscreen is true
+                    // whether the modal should stretch to take up the whole screen
+                    fullscreen: true,
+                    // optional function to be called if user closes modal (via `X` or escape, etc)
+                    callback: () => console.log('Goodbye.'),
+                    // optional title for header chrome
+                    title: 'Templates',
+                    // optional action buttons for header chrome
+                    // max 3, up to 1 on right side
+                    actions: [],
+                })
             }, false);
         });
     </script>
