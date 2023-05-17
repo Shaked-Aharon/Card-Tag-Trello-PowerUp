@@ -1,0 +1,26 @@
+Privacy Policy for Agile Utils
+
+This privacy policy outlines how Agile Utils collects, uses, and protects any information obtained when using our Trello Power-Up. We are committed to ensuring that your privacy is protected. Please read this policy carefully to understand how we handle your information.
+
+Information We Collect:
+
+Agile Utils does not collect any personal or identifiable information from users.
+We do not store or retain any user data within our Trello Power-Up.
+How We Use Information:
+
+Since we do not collect any user data, we do not use the information for any purpose.
+Data Security:
+
+Agile Utils takes the security of user data seriously.
+As we do not collect or store any user data, there are no security measures required for protecting user information.
+Third-Party Links:
+
+Our Trello Power-Up may contain links to external websites or services that are not controlled or operated by us.
+We are not responsible for the privacy practices or content of these third-party websites or services.
+Changes to This Privacy Policy:
+
+Agile Utils may update this privacy policy from time to time by posting a new version on our website.
+Users should periodically review this page to ensure they are aware of any changes.
+Contact Information:
+
+If you have any questions or concerns about this privacy policy or our Trello Power-Up, please contact us at [Contact Email].
