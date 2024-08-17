@@ -34,14 +34,21 @@ function handleTagSelection(t, options) {
     return t.set('card', 'shared', 'tag', null)
       .then(function () {
         return t.closePopup();
-      });;
+      });
   }
   var tag = {
     text: this.text,
     color: tagTypeToColor[this.value]
   };
   return t.set('card', 'shared', 'tag', tag)
-    // .then(() => {
-    //   return setTemplate(t, this.value)
-    // });
+    .then(function () {
+      t.get('board', 'shared', 'isAutoOverwriteTemplate')
+      .then(value => {
+        console.log({isOverwriteDescriptionWithTemplate: value});
+        // if(value){
+        //   setTemplate(t, this.value)
+        // }
+      })
+      return t.closePopup();
+    })
 }

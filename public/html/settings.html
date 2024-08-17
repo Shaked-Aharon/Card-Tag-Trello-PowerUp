@@ -47,6 +47,7 @@
         </div>
         <button type="button" id="submitBtn">Save</button>
     </div>
+    <label><input type="checkbox" name="isAutoOverwriteTemplate" id="isAutoOverwriteTemplate"/>Overwrite card description with tag template when changes.</label>
     <button id="templatesBtn">Edit Templates</button>
     <button id="authBtn">Authorize</button>
     <script src="../js/constants.js"></script>
@@ -118,6 +119,10 @@
                     // max 3, up to 1 on right side
                     actions: [],
                 })
+            }, false);
+
+            document.querySelector('#isAutoOverwriteTemplate').addEventListener('click', function (e) {
+                t.set('board', 'shared', 'isAutoOverwriteTemplate', e.target.checked);
             }, false);
         });
     </script>
