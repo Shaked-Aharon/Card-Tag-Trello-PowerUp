@@ -21,7 +21,7 @@ function fetchCardLastActivity(t, cardId) {
         .getToken()
         .then(token => {
             if (!token) throw 'Invalid or missing token.'
-            var url = `https://api.trello.com/1/cards/${cardId}/actions?key=${KEY}&token=${token}&filter=updateCard:moveCardToBoard,moveCardFromBoard,updateCard:closed`;
+            var url = `https://api.trello.com/1/cards/${cardId}/actions?key=${KEY}&token=${token}&filter=all&limit=1&sort=-date`;
             return fetch(url)
                 .then(function (response) {
                     if (!response.ok) {

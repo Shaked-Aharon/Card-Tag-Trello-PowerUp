@@ -6,7 +6,8 @@
       "list-sorters",
       "card-backs",
       "card-cover",
-      "board-buttons"
+      "board-buttons",
+      "list-sorters"
     ],
     "scopes": [
       "read",
