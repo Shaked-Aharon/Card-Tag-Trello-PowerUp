@@ -1,22 +1,23 @@
 {
     "capabilities": [
-      "card-badges",
-      "card-buttons",
-      "card-detail-badges",
-      "list-sorters",
-      "card-backs",
-      "card-cover",
-      "board-buttons",
-      "list-sorters"
+        "card-badges",
+        "card-buttons",
+        "card-detail-badges",
+        "list-sorters",
+        "card-backs",
+        "card-cover",
+        "board-buttons",
+        "list-sorters"
     ],
     "scopes": [
-      "read",
-      "write",
-      "account"
+        "read",
+        "write",
+        "account"
     ],
     "icon": {
-      "url": "https://youriconurl.com/icon.png"
+        "url": "https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/public/icons/small-icon.svg",
+        "width": 16,
+        "height": 16
     },
     "name": "Custom Card Background Plugin"
-  }
-  
+}
