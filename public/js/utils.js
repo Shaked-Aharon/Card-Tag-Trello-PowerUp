@@ -21,8 +21,14 @@ function fetchCardLastActivity(t, cardId) {
         .getToken()
         .then(token => {
             if (!token) throw 'Invalid or missing token.'
-            return t.getRestApi()
-                .get(`/cards/${cardId}/actions`, { filter: 'updateCard:moveCardToBoard,moveCardFromBoard,updateCard:closed' })
+            var url = `https://api.trello.com/1/cards/${cardId}/actions?key=${KEY}&token=${token}&filter=updateCard:moveCardToBoard,moveCardFromBoard,updateCard:closed`;
+            return fetch(url)
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
                 .then(function (actions) {
                     if (actions && actions.length > 0) {
                         return actions[0].date; // Return the date of the most recent action
