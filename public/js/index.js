@@ -4,6 +4,7 @@ try {
     "card-badges": cardBadagesController,
     'card-buttons': cardButtonsControllers,
     'card-detail-badges': cardDetailsBadgesController,
+    'list-sorters': listSortersController,
   }, {
     appKey: KEY,
     appName: POWERUP_NAME

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .color-option {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      cursor: pointer;
+      margin: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="color-options">
+    <div class="color-option" style="background-color: #D4EDDA;" data-color="#D4EDDA"></div>
+    <div class="color-option" style="background-color: #FFF3CD;" data-color="#FFF3CD"></div>
+    <div class="color-option" style="background-color: #F8D7DA;" data-color="#F8D7DA"></div>
+  </div>
+  <script>
+    document.querySelectorAll('.color-option').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var color = el.getAttribute('data-color');
+        TrelloPowerUp.iframe().closePopup().then(function() {
+          TrelloPowerUp.iframe().set('card', 'shared', 'backgroundColor', color);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

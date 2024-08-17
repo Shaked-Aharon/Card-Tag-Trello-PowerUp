@@ -2,7 +2,17 @@ const cardButtonsControllers = (t, opts) => {
     return Promise.all([t.getRestApi().isAuthorized(), template.Btn(t)])
         .then(([isAuthorized, templateBtn]) => {
             console.log({ templateBtn })
-            const defaultBtns = [tag.Btn(),templateBtn, priority.Btn()];
+            const defaultBtns = [tag.Btn(),templateBtn, priority.Btn(), {
+                // icon: CUSTOM_CARD_BACKGROUND,
+                text: 'Change Color',
+                callback: function(t) {
+                  return t.popup({
+                    title: 'Change Card Background',
+                    url: './background-popup.html',
+                    height: 184
+                  });
+                }
+              }];
             return defaultBtns;
             // if (isAuthorized) {
             //     return [...defaultBtns, {
