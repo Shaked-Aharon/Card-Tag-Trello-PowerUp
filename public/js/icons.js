@@ -8,4 +8,5 @@ const icons = {
     priority_low: `${BASEURL}/public/icons/priority-low.svg`,
     priority_lowest: `${BASEURL}/public/icons/priority-lowest.svg`,
     priority: `${BASEURL}/public/icons/priority.svg`,
+    logo: `${BASEURL}/public/icons/small-icon.svg`,
 }
