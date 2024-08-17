@@ -17,7 +17,7 @@ function applyBackgroundColor(cardId, color) {
     //     cardElement.style.backgroundColor = color;
     // }
     var targetNode = document.querySelector(`div[data-testid="trello-card"][data-card-id="${cardId}"]`);
-    console.log(`Try finding element to paint: 'div[data-testid="trello-card"][data-card-id="${cardId}"]'`, cardElement)
+    console.log(`Try finding element to paint: 'div[data-testid="trello-card"][data-card-id="${cardId}"]'`, targetNode)
 
     if (targetNode) {
         console.log(`Try painting card element usig this color: ${color}`);
