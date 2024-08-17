@@ -42,7 +42,7 @@ function handleTagSelection(t, options) {
   };
   return t.set('card', 'shared', 'tag', tag)
     .then(function () {
-      t.get('board', 'shared', 'isAutoOverwriteTemplate')
+      t.get('board', 'shared', 'shared', 'is-auto-overwrite-template')
       .then(value => {
         console.log({isOverwriteDescriptionWithTemplate: value});
         // if(value){

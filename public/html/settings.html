@@ -60,7 +60,7 @@
         });
         t.get('board', 'shared', 'card-number-prefix')
             .then(value => document.querySelector('#cardNumberPrefix').value = value)
-        t.set('board', 'shared', 'isAutoOverwriteTemplate')
+        t.set('board', 'shared', 'shared', 'is-auto-overwrite-template')
             .then(value => document.querySelector('#isAutoOverwriteTemplate').checked = !!value)
 
         t.render(function () {
@@ -124,7 +124,7 @@
             }, false);
 
             document.querySelector('#isAutoOverwriteTemplate').addEventListener('click', function (e) {
-                t.set('board', 'shared', 'isAutoOverwriteTemplate', e.target.checked);
+                t.set('board', 'shared', 'is-auto-overwrite-template', e.target.checked);
             }, false);
         });
     </script>
