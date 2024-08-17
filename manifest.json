@@ -15,7 +15,9 @@
         "account"
     ],
     "icon": {
-        "url": "https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/favicon.ico"
+        "url": "https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/public/icons/icon.png",
+        "width": 16,
+        "height": 16
     },
-    "name": "Custom Card Background Plugin"
+    "name": "Agile Utils"
 }
