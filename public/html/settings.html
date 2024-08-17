@@ -65,14 +65,16 @@
 
             const authBtn = document.querySelector('#authBtn');
             const templatesBtn = document.querySelector('#templatesBtn');
-            Promise.all([t.getRestApi().isAuthorized()])
-                .then(([isAuthorized]) => {
+            const isAutoOverwriteTemplateCheckbox = document.querySelector('#isAutoOverwriteTemplate')
+            Promise.all([t.getRestApi().isAuthorized(), t.set('board', 'shared', 'isAutoOverwriteTemplate')])
+                .then(([isAuthorized, isAutoOverwriteTemplate]) => {
                     if (isAuthorized) {
                         authBtn.innerText = 'Clear Token'
                         authBtn.classList.add('authorized');
                         templatesBtn.disabled = false;
                         return;
                     }
+                    isAutoOverwriteTemplateCheckbox.checked = isAutoOverwriteTemplate;
                     templatesBtn.disabled = true;
                     authBtn.innerText = 'Authorize'
                     authBtn.classList.remove('authorized');
