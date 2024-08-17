@@ -18,5 +18,10 @@
         "url": "./public/icons/button-icon.png"
     },
     "name": "Agile Utils",
-    "author": "Shaked Aharon"
+    "author": "Shaked Aharon",
+    "connectors": {
+        "iframe": {
+            "url": "./index.html"
+        }
+    }
 }
