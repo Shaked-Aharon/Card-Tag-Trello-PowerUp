@@ -15,3 +15,14 @@ function getColorBasedOnLabels(labels) {
       cardElement.style.backgroundColor = color;
     }
   }
+
+  function fetchCardLastActivity(t, cardId) {
+    return t.getRestApi()
+      .get(`/cards/${cardId}/actions`, { filter: 'updateCard:moveCardToBoard,moveCardFromBoard,updateCard:closed' })
+      .then(function(actions) {
+        if (actions && actions.length > 0) {
+          return actions[0].date; // Return the date of the most recent action
+        }
+        return null;
+      });
+  }

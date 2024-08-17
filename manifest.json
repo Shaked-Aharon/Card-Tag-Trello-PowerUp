@@ -1,0 +1,21 @@
+{
+    "capabilities": [
+      "card-badges",
+      "card-buttons",
+      "card-detail-badges",
+      "list-sorters",
+      "card-backs",
+      "card-cover",
+      "board-buttons"
+    ],
+    "scopes": [
+      "read",
+      "write",
+      "account"
+    ],
+    "icon": {
+      "url": "https://youriconurl.com/icon.png"
+    },
+    "name": "Custom Card Background Plugin"
+  }
+  
