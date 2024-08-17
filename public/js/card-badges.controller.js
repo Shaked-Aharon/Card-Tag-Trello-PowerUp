@@ -16,11 +16,11 @@ const cardBadagesController = (t, opts) => {
 
           var coverColor;
           if (daysDifference <= 1) {
-            coverColor = '#D4EDDA'; // Green for recently updated (within 1 day)
+            coverColor = 'green'; // Green for recently updated (within 1 day)
           } else if (daysDifference <= 7) {
-            coverColor = '#FFF3CD'; // Yellow for updates within the last week
+            coverColor = 'yellow'; // Yellow for updates within the last week
           } else {
-            coverColor = '#F8D7DA'; // Red for older updates
+            coverColor = 'red'; // Red for older updates
           }
 
           // Use set to change the cover
