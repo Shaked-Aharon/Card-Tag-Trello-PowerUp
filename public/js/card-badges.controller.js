@@ -13,25 +13,36 @@ const cardBadagesController = (t, opts) => {
           var now = new Date();
           var timeDifference = now - activityDate; // Time difference in milliseconds
           var daysDifference = timeDifference / (1000 * 3600 * 24); // Convert to days
-          console.log(`Difference in days: ${daysDifference}`);
+
+          var coverColor;
           if (daysDifference <= 1) {
-            applyBackgroundColor(card.id, '#D4EDDA'); // Green for recently updated (within 1 day)
+            coverColor = '#D4EDDA'; // Green for recently updated (within 1 day)
           } else if (daysDifference <= 7) {
-            applyBackgroundColor(card.id, '#FFF3CD'); // Yellow for updates within the last week
+            coverColor = '#FFF3CD'; // Yellow for updates within the last week
           } else {
-            applyBackgroundColor(card.id, '#F8D7DA'); // Red for older updates
+            coverColor = '#F8D7DA'; // Red for older updates
           }
+
+          // Use set to change the cover
+          t.set('card', 'shared', 'cover', {
+            color: coverColor,
+            brightness: 'light'
+          });
+          badges.push({
+            text: 'Last Updated: ' + daysDifference.toFixed(0) + ' days ago',
+            color: coverColor
+          });
         }
-        if (card.due) {
-          var dueDate = new Date(card.due);
-          var now = new Date();
-          if (dueDate < now) {
-            badges.push({
-              text: 'Overdue!',
-              color: 'red'
-            });
-          }
-        }
+        // if (card.due) {
+        //   var dueDate = new Date(card.due);
+        //   var now = new Date();
+        //   if (dueDate < now) {
+        //     badges.push({
+        //       text: 'Overdue!',
+        //       color: 'red'
+        //     });
+        //   }
+        // }
         return badges
       })
     })
