@@ -60,13 +60,14 @@
         });
         t.get('board', 'shared', 'card-number-prefix')
             .then(value => document.querySelector('#cardNumberPrefix').value = value)
+        t.set('board', 'shared', 'isAutoOverwriteTemplate')
+            .then(value => document.querySelector('#isAutoOverwriteTemplate').checked = !!value)
 
         t.render(function () {
 
             const authBtn = document.querySelector('#authBtn');
             const templatesBtn = document.querySelector('#templatesBtn');
-            const isAutoOverwriteTemplateCheckbox = document.querySelector('#isAutoOverwriteTemplate')
-            Promise.all([t.getRestApi().isAuthorized(), t.set('board', 'shared', 'isAutoOverwriteTemplate')])
+            Promise.all([t.getRestApi().isAuthorized()])
                 .then(([isAuthorized, isAutoOverwriteTemplate]) => {
                     if (isAuthorized) {
                         authBtn.innerText = 'Clear Token'
@@ -74,7 +75,6 @@
                         templatesBtn.disabled = false;
                         return;
                     }
-                    isAutoOverwriteTemplateCheckbox.checked = isAutoOverwriteTemplate;
                     templatesBtn.disabled = true;
                     authBtn.innerText = 'Authorize'
                     authBtn.classList.remove('authorized');
