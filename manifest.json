@@ -15,7 +15,7 @@
         "account"
     ],
     "icon": {
-        "url": "https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/public/icons/button-icon.png",
+        "url": "./public/icons/button-icon.png",
         "width": 16,
         "height": 16
     },
