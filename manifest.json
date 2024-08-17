@@ -15,9 +15,7 @@
         "account"
     ],
     "icon": {
-        "url": "./public/icons/button-icon.png",
-        "width": 16,
-        "height": 16
+        "url": "./public/icons/button-icon.png"
     },
     "name": "Agile Utils",
     "author": "Shaked Aharon"
