@@ -13,7 +13,7 @@ const cardBadagesController = (t, opts) => {
           var now = new Date();
           var timeDifference = now - activityDate; // Time difference in milliseconds
           var daysDifference = timeDifference / (1000 * 3600 * 24); // Convert to days
-
+          console.log(`Difference in days: ${daysDifference}`);
           if (daysDifference <= 1) {
             applyBackgroundColor(card.id, '#D4EDDA'); // Green for recently updated (within 1 day)
           } else if (daysDifference <= 7) {
