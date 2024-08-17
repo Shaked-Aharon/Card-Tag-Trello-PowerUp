@@ -95,6 +95,8 @@
 
             document.querySelector('#submitBtn').addEventListener('click', function () {
                 const input = document.querySelector('#cardNumberPrefix');
+                const checkbox = document.querySelector('#isAutoOverwriteTemplate');
+                console.log({value: checkbox.checked})
                 t.set('board', 'shared', 'card-number-prefix', input.value);
             }, false);
 
