@@ -47,7 +47,8 @@
         </div>
         <button type="button" id="submitBtn">Save</button>
     </div>
-    <label><input type="checkbox" name="isAutoOverwriteTemplate" id="isAutoOverwriteTemplate"/>Overwrite card description with tag template when changes.</label>
+    <label><input type="checkbox" name="isAutoOverwriteTemplate" id="isAutoOverwriteTemplate" />Overwrite card
+        description with tag template when changes.</label>
     <button id="templatesBtn">Edit Templates</button>
     <button id="authBtn">Authorize</button>
     <script src="../js/constants.js"></script>
@@ -80,11 +81,14 @@
                     authBtn.classList.remove('authorized');
                 })
 
-
+            const authUrl =
+                "https://trello.com/1/authorize?expiration=never" +
+                `&name=Agile Utils&author=Shaked Aharon&scope=read,write,account&key=${KEY}&callback_method=fragment` +
+                "&return_url=https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/authorize.html";
             authBtn.addEventListener('click', function () {
                 if (authBtn.innerText === 'Clear Token') { return t.getRestApi().clearToken(); }
                 t.getRestApi()
-                    .authorize({ scope: 'read,write' })
+                    .authorize(authUrl)
                     .then(function (t) {
                         authBtn.innerText = 'Clear Token';
                         authBtn.classList.add('authorized') = 'Clear Token';
@@ -96,7 +100,7 @@
             document.querySelector('#submitBtn').addEventListener('click', function () {
                 const input = document.querySelector('#cardNumberPrefix');
                 const checkbox = document.querySelector('#isAutoOverwriteTemplate');
-                console.log({input, checkbox})
+                console.log({ input, checkbox })
                 t.set('board', 'shared', 'is-auto-overwrite-template', checkbox.checked);
                 t.set('board', 'shared', 'card-number-prefix', input.value);
             }, false);

@@ -19,6 +19,8 @@
     },
     "name": "Agile Utils",
     "author": "Shaked Aharon",
+    "details": "Now you can have tag for you cards and priority",
+    "description": "This plugin give you the abillity to set a different tag, priority or template for each card in order to make productivity more efficient also you can set a different priority in order to keep ahead to the right direction",
     "connectors": {
         "iframe": {
             "url": "./index.html"

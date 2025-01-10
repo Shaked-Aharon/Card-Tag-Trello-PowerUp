@@ -15,10 +15,16 @@
             appKey: KEY,
             appName: POWERUP_NAME
         });
+
+        const authUrl =
+            "https://trello.com/1/authorize?expiration=never" +
+            `&name=Agile Utils&author=Shaked Aharon&scope=read,write,account&key=${KEY}&callback_method=fragment` +
+            "&return_url=https://shaked-aharon.github.io/Card-Tag-Trello-PowerUp/authorize.html";
+
         t.render(function () {
             document.querySelector('button').addEventListener('click', function () {
                 t.getRestApi()
-                    .authorize({ scope: 'read,write,account' })
+                    .authorize(authUrl)
                     .then(function (t) {
                         alert('Success!');
                     }).catch(TrelloPowerUp.restApiError.AuthDeniedError, function () {
