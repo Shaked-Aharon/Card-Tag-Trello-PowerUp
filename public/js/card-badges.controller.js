@@ -1,5 +1,5 @@
 const cardBadagesController = (t, opts) => {
-  return Promise.all([t.card('all'), t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority'), t.get('board', 'shared', 'card-number-prefix')])
+  return Promise.all([t.card('id', 'idShort', 'due'), t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority'), t.get('board', 'shared', 'card-number-prefix')])
     .then(([card, selectedTag, selectedPriority, cardNumberPrefix]) => {
       return fetchCardLastActivity(t, card.id).then(lastActivity => {
 

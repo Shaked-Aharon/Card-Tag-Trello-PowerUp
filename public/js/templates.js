@@ -116,7 +116,6 @@ const template = {
 function handleTemplateSelection(t, options) {
     return Promise.all([t.card('id', 'desc')])
         .then(([card]) => {
-            console.log({ token: this.token, id: card.id, selectedTemplate: this.template, defaultTemplates });
             return t.popup({
                 type: 'confirm',
                 title: `Set Template`,
