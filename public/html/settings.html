@@ -91,7 +91,7 @@
                     .authorize({ scope: 'read,write,account', return_url: window.location.href})
                     .then(function (t) {
                         authBtn.innerText = 'Clear Token';
-                        authBtn.classList.add('authorized') = 'Clear Token';
+                        authBtn.classList.add('authorized');
                     }).catch(TrelloPowerUp.restApiError.AuthDeniedError, function () {
                         authBtn.innerText = 'Try again';
                     });
