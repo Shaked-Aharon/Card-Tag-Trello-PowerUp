@@ -8,31 +8,31 @@ const cardBadagesController = (t, opts) => {
           tag.Badge(selectedTag, badageTypes.badge),
           priority.Badge(selectedPriority, badageTypes.badge)
         ]
-        if (lastActivity) {
-          var activityDate = new Date(lastActivity);
-          var now = new Date();
-          var timeDifference = now - activityDate; // Time difference in milliseconds
-          var daysDifference = timeDifference / (1000 * 3600 * 24); // Convert to days
+        // if (lastActivity) {
+        //   var activityDate = new Date(lastActivity);
+        //   var now = new Date();
+        //   var timeDifference = now - activityDate; // Time difference in milliseconds
+        //   var daysDifference = timeDifference / (1000 * 3600 * 24); // Convert to days
 
-          var coverColor;
-          if (daysDifference <= 1) {
-            coverColor = 'green'; // Green for recently updated (within 1 day)
-          } else if (daysDifference <= 7) {
-            coverColor = 'yellow'; // Yellow for updates within the last week
-          } else {
-            coverColor = 'red'; // Red for older updates
-          }
+        //   var coverColor;
+        //   if (daysDifference <= 1) {
+        //     coverColor = 'green'; // Green for recently updated (within 1 day)
+        //   } else if (daysDifference <= 7) {
+        //     coverColor = 'yellow'; // Yellow for updates within the last week
+        //   } else {
+        //     coverColor = 'red'; // Red for older updates
+        //   }
 
-          // Use set to change the cover
-          t.set('card', 'shared', 'cover', {
-            color: coverColor,
-            brightness: 'light'
-          });
-          badges.push({
-            text: 'עודכן לאחרונה: ' + daysDifference.toFixed(0) + ' ימים',
-            color: coverColor
-          });
-        }
+        //   // Use set to change the cover
+        //   t.set('card', 'shared', 'cover', {
+        //     color: coverColor,
+        //     brightness: 'light'
+        //   });
+        //   badges.push({
+        //     text: 'עודכן לאחרונה: ' + daysDifference.toFixed(0) + ' ימים',
+        //     color: coverColor
+        //   });
+        // }
         // if (card.due) {
         //   var dueDate = new Date(card.due);
         //   var now = new Date();
