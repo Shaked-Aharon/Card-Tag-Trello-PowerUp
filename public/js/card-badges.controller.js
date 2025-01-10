@@ -1,7 +1,7 @@
 const cardBadagesController = (t, opts) => {
   return Promise.all([t.card('all'), t.get('card', 'shared', 'tag'), t.get('card', 'shared', 'priority'), t.get('board', 'shared', 'card-number-prefix')])
     .then(([card, selectedTag, selectedPriority, cardNumberPrefix]) => {
-      return fetchCardLastActivity(t, card.id).then(lastActivity => {
+      // return fetchCardLastActivity(t, card.id).then(lastActivity => {
 
         const badges = [
           { text: `${cardNumberPrefix}-${card.idShort}`, showOnClose: true },
@@ -44,7 +44,7 @@ const cardBadagesController = (t, opts) => {
         //   }
         // }
         return badges
-      })
+      // })
     })
 
 }
