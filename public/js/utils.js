@@ -15,7 +15,12 @@ function fetchCardLastActivity(t, cardId) {
         .then(token => {
             if (!token) throw 'Invalid or missing token.'
             var url = `https://api.trello.com/1/cards/${cardId}/actions?key=${KEY}&token=${token}&filter=all&limit=1&sort=-date`;
-            return fetch(url)
+            return fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
                 .then(function (response) {
                     if (!response.ok) {
                         throw new Error('Network response was not ok ' + response.statusText);
