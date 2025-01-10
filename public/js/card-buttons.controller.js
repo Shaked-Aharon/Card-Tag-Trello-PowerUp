@@ -1,6 +1,7 @@
 const cardButtonsControllers = (t, opts) => {
-    return Promise.all([t.getRestApi().isAuthorized(), template.Btn(t)])
-        .then(([isAuthorized, templateBtn]) => {
+    return Promise.all([t.getRestApi().isAuthorized(), template.Btn(t), t.get('board', 'shared', 'templates')])
+        .then(([isAuthorized, templateBtn, templates]) => {
+            if (templates === undefined) { templates = defaultTemplates; t.set('board', 'shared', 'templates', defaultTemplates) }
             console.log({ templateBtn })
             const defaultBtns = [tag.Btn(),templateBtn, priority.Btn(), {
                 // icon: CUSTOM_CARD_BACKGROUND,
@@ -8,7 +9,7 @@ const cardButtonsControllers = (t, opts) => {
                 callback: function(t) {
                   return t.popup({
                     title: 'Change Card Background',
-                    url: './background-popup.html',
+                    url: './public/html/change-color.html',
                     height: 184
                   });
                 }

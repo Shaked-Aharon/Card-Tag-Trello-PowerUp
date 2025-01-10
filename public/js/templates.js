@@ -139,6 +139,7 @@ function updateTemplate(t, card, token, template) {
     url.searchParams.append('desc', template);
     fetch(url, { method: 'PUT' })
         .then(res => {
+            console.log('updateTemplate', {res})
             if (res.status !== 200) { /*do something*/ }
             return res.json();
         })
