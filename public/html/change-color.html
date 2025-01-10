@@ -46,7 +46,7 @@
         const restApi = await t.getRestApi();
 
         // Update the card's cover
-        await restApi.update(`/cards/${card.id}`, {
+        await t.set(`card`, 'shared', {
           cover: {
             color,
             brightness: 'dark',
