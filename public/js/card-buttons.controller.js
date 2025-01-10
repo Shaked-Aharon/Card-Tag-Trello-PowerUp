@@ -4,7 +4,7 @@ const cardButtonsControllers = (t, opts) => {
             if (templates === undefined) { templates = defaultTemplates; t.set('board', 'shared', 'templates', defaultTemplates) }
             console.log({ templateBtn })
             const defaultBtns = [tag.Btn(),templateBtn, priority.Btn(), {
-                // icon: CUSTOM_CARD_BACKGROUND,
+                icon: icons.changeColor,
                 text: 'Change Color',
                 callback: function(t) {
                   return t.popup({

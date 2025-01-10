@@ -1,6 +1,7 @@
 const icons = {
     add: `${BASEURL}/public/icons/add.svg`,
     tag: `${BASEURL}/public/icons/tag.svg`,
+    changeColor: `${BASEURL}/public/icons/colors.svg`,
     template: `${BASEURL}/public/icons/description.svg`,
     priority_highest: `${BASEURL}/public/icons/priority-highest.svg`,
     priority_high: `${BASEURL}/public/icons/priority-high.svg`,

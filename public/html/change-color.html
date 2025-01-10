@@ -34,11 +34,35 @@
         t.set('card', 'shared', 'backgroundColor', color);
       });
     }
+
+    async function handleColorSelected2(el) {
+      try {
+        // Get the card ID
+        const color = el.getAttribute('data-color');
+
+        const card = await t.card('id');
+
+        // Get authorized REST API client
+        const restApi = await t.getRestApi();
+
+        // Update the card's cover
+        await restApi.put(`/cards/${card.id}`, {
+          cover: {
+            color,
+            brightness: 'dark',
+            size: 'full'
+          }
+        });
+      } catch (error) {
+        console.error('Failed to update card color:', error);
+      }
+    }
+
     t.render(function () {
       document
         .querySelectorAll('.color-option')
         .forEach(function (el) {
-          el.addEventListener('click', () => handleColorSelected(el));
+          el.addEventListener('click', () => handleColorSelected2(el));
         });
     });
   </script>
