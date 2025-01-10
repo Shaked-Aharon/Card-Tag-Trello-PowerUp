@@ -88,7 +88,7 @@
             authBtn.addEventListener('click', function () {
                 if (authBtn.innerText === 'Clear Token') { return t.getRestApi().clearToken(); }
                 t.getRestApi()
-                    .authorize(authUrl)
+                    .authorize({ scope: 'read,write,account', return_url: window.location.href})
                     .then(function (t) {
                         authBtn.innerText = 'Clear Token';
                         authBtn.classList.add('authorized') = 'Clear Token';
