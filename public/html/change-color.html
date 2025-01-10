@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -13,6 +14,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="color-options">
     <div class="color-option" style="background-color: #D4EDDA;" data-color="#D4EDDA"></div>
@@ -20,14 +22,24 @@
     <div class="color-option" style="background-color: #F8D7DA;" data-color="#F8D7DA"></div>
   </div>
   <script>
-    document.querySelectorAll('.color-option').forEach(function(el) {
-      el.addEventListener('click', function() {
-        var color = el.getAttribute('data-color');
-        TrelloPowerUp.iframe().closePopup().then(function() {
-          TrelloPowerUp.iframe().set('card', 'shared', 'backgroundColor', color);
-        });
+    var t = window.TrelloPowerUp.iframe({
+      appKey: KEY,
+      appName: POWERUP_NAME
+    });
+    function handleColorSelected(el) {
+      var color = el.getAttribute('data-color');
+      t.closePopup().then(function () {
+        t.set('card', 'shared', 'backgroundColor', color);
       });
+    }
+    t.render(function () {
+      document
+        .querySelectorAll('.color-option')
+        .forEach(function (el) {
+          el.addEventListener('click', () => handleColorSelected(el));
+        });
     });
   </script>
 </body>
+
 </html>
