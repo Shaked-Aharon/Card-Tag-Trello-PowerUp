@@ -133,7 +133,8 @@ function updateTemplate(t, card, token, template) {
     console.log({ card, token, template })
     t.closePopup();
     let url = new URL(`https://api.trello.com/1/cards/${card.id}`);
-    url.searchParams.append('key', 'f3066f5108e24c693700a5ac80e00dec');
+    // url.searchParams.append('key', 'f3066f5108e24c693700a5ac80e00dec');
+    url.searchParams.append('key', KEY);
     url.searchParams.append('token', token);
     url.searchParams.append('desc', template);
     fetch(url, { method: 'PUT' })
@@ -162,7 +163,8 @@ function setTemplate(t, selectedTag) {
                 onConfirm: function (t, opts) {
                     t.closePopup();
                     let url = new URL(`https://api.trello.com/1/cards/${card.id}`);
-                    url.searchParams.append('key', 'f3066f5108e24c693700a5ac80e00dec');
+                    url.searchParams.append('key', KEY);
+                    // url.searchParams.append('key', 'f3066f5108e24c693700a5ac80e00dec');
                     url.searchParams.append('token', token);
                     url.searchParams.append('desc', defaultTemplates[selectedTag]);
                     fetch(url, { method: 'PUT' })
