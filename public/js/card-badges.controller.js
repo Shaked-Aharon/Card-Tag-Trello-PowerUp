@@ -29,7 +29,8 @@ const cardBadagesController = (t, opts) => {
             brightness: 'light'
           });
           badges.push({
-            text: 'עודכן לאחרונה: ' + daysDifference.toFixed(0) + ' ימים',
+            // text: 'עודכן לאחרונה: ' + daysDifference.toFixed(0) + ' ימים',
+            text: 'Last Update: ' + daysDifference.toFixed(0) + ' days',
             color: coverColor
           });
         }
