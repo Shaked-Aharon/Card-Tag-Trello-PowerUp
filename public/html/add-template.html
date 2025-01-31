@@ -48,7 +48,6 @@
                             return t.popup({ title: 'Error', items: [{ text: 'A template with that name already exists!' }] })
                         }
                         templates[templateName.value] = '';
-                        console.log({ ...templates })
                         t.set('board', 'shared', 'templates', templates)
                             .then((e) => {
                                 t.closePopup();

@@ -2,7 +2,6 @@ const cardButtonsControllers = (t, opts) => {
     return Promise.all([t.getRestApi().isAuthorized(), template.Btn(t), t.get('board', 'shared', 'templates')])
         .then(([isAuthorized, templateBtn, templates]) => {
             if (templates === undefined) { templates = defaultTemplates; t.set('board', 'shared', 'templates', defaultTemplates) }
-            console.log({ templateBtn })
             const defaultBtns = [tag.Btn(),templateBtn, priority.Btn(), {
                 icon: icons.changeColor,
                 text: 'Change Color',

@@ -93,7 +93,6 @@ const template = {
     Btn(t) {
         return Promise.all([t.getRestApi().getToken(), t.get('board', 'shared', 'templates')])
             .then(([token, templates]) => {
-                console.log({token, templates})
                 // if (!token) { return t.popup({ title: 'You must authorized to use templates' }) }
                 if (!token) { return {} }
                 if (templates === undefined) { templates = defaultTemplates; t.set('board', 'shared', 'templates', defaultTemplates) }
@@ -130,7 +129,6 @@ function handleTemplateSelection(t, options) {
 }
 
 function updateTemplate(t, card, token, template) {
-    console.log({ card, token, template })
     t.closePopup();
     let url = new URL(`https://api.trello.com/1/cards/${card.id}`);
     // url.searchParams.append('key', 'f3066f5108e24c693700a5ac80e00dec');
@@ -139,7 +137,6 @@ function updateTemplate(t, card, token, template) {
     url.searchParams.append('desc', template);
     fetch(url, { method: 'PUT' })
         .then(res => {
-            console.log('updateTemplate', {res})
             if (res.status !== 200) { /*do something*/ }
             return res.json();
         })
@@ -152,7 +149,6 @@ function setTemplate(t, selectedTag) {
         .then(([token, card, templates]) => {
             if (!['bug', 'story', 'task'].includes(selectedTag)) { return t.closePopup(); }
             if (templates === undefined) { templates = defaultTemplates; t.set('board', 'shared', 'templates', defaultTemplates) }
-            console.log({ token, id: card.id, selectedTag, defaultTemplates });
             if (!token) { console.log('Not Authoraized, Cant Set Template'); return; }
             // if (card.desc.trim().length > 0) {
             return t.popup({
@@ -172,7 +168,7 @@ function setTemplate(t, selectedTag) {
                             if (res.status !== 200) { /*do something*/ }
                             return res.json();
                         })
-                        .then(res => console.log(res))
+                        .then(res => console.log('Template overwritten.'))
                         .catch(err => console.log(err))
                 },
                 confirmStyle: 'danger',

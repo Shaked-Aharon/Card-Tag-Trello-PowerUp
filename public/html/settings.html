@@ -100,7 +100,6 @@
             document.querySelector('#submitBtn').addEventListener('click', function () {
                 const input = document.querySelector('#cardNumberPrefix');
                 const checkbox = document.querySelector('#isAutoOverwriteTemplate');
-                console.log({ input, checkbox })
                 t.set('board', 'shared', 'is-auto-overwrite-template', checkbox.checked);
                 t.set('board', 'shared', 'card-number-prefix', input.value);
             }, false);
@@ -121,7 +120,7 @@
                     // whether the modal should stretch to take up the whole screen
                     fullscreen: true,
                     // optional function to be called if user closes modal (via `X` or escape, etc)
-                    callback: () => console.log('Goodbye.'),
+                    callback: () => {},
                     // optional title for header chrome
                     title: 'Templates',
                     // optional action buttons for header chrome
