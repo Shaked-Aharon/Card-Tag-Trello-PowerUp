@@ -10,6 +10,8 @@ const tag = {
             { text: 'Select', callback: handleTagSelection.bind({ type: RESET }) },
             { text: 'Bug', callback: handleTagSelection.bind({ text: 'Bug', value: 'bug' }) },
             { text: 'Task', callback: handleTagSelection.bind({ text: 'Task', value: 'task' }) },
+            { text: 'Improvements', callback: handleTagSelection.bind({ text: 'Improvements', value: 'improvements' }) },
+            { text: 'Feature', callback: handleTagSelection.bind({ text: 'Feature', value: 'feature' }) },
             { text: 'Story', callback: handleTagSelection.bind({ text: 'Story', value: 'story' }) },
             { text: 'Epic', callback: handleTagSelection.bind({ text: 'Epic', value: 'epic' }) }
           ],

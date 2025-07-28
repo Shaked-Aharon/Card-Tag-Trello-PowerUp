@@ -10,10 +10,14 @@ const tagTypeToColor = {
     'task': 'yellow',
     'story': 'blue',
     'epic': 'green',
+    'feature': 'purple',
+    'improvements': 'orange',
 }
 const tagType = {
     'bug': 'Bug',
     'task': 'Task',
+    'improvements': 'Improvements',
+    'feature': 'Feature',
     'story': 'Story',
     'epic': 'Epic',
 }
